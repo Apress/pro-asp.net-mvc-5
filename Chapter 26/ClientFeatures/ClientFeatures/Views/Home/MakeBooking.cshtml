@@ -1,0 +1,59 @@
+﻿@model ClientFeatures.Models.Appointment
+
+@{
+    ViewBag.Title = "Make Appointment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    AjaxOptions ajaxOpts = new AjaxOptions {
+        OnSuccess = "processResponse"
+    };
+}
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        function switchViews() {
+            $(".hidden, .visible").toggleClass("hidden visible");
+        }
+
+        function processResponse(appt) {
+            $('#successClientName').text(appt.ClientName);
+            switchViews();
+        }
+
+        $(document).ready(function () {
+            $('#backButton').click(function (e) {
+                switchViews();
+            });
+        });
+    </script>
+
+}
+
+@section Body {
+
+    <div id="formDiv" class="visible well">
+        @using (Ajax.BeginForm(ajaxOpts)) {
+            @Html.ValidationSummary(true)
+            <div class="form-group">
+                <label for="ClientName">Your name:</label>
+                <p>@Html.ValidationMessageFor(m => m.ClientName)</p>
+                @Html.TextBoxFor(m => m.ClientName, new { @class = "form-control" })
+            </div>
+            <div class="checkbox">
+                <label>
+                    @Html.CheckBoxFor(m => m.TermsAccepted)
+                    I accept the terms & conditions
+                </label>
+            </div>
+            <input type="submit" value="Make Booking" class="btn btn-primary" />
+        }
+    </div>
+
+    <div id="successDiv" class="hidden well">
+        <h4 class="lead">Your appointment is confirmed</h4>
+        <p>Your name is: <b id="successClientName"></b></p>
+        <button id="backButton" class="btn btn-primary">Back</button>
+    </div>
+
+}

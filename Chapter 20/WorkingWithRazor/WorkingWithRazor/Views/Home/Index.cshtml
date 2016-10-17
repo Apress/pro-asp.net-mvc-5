@@ -1,0 +1,30 @@
+﻿@model string[]
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Header {
+    <div class="view">
+        @foreach (string str in new[] { "Home", "List", "Edit" }) {
+            @Html.ActionLink(str, str, null, new { style = "margin: 5px" })
+        }
+    </div>
+}
+
+@section Body {
+    <div class="view">
+        This is a list of fruit names:
+
+        @foreach (string name in Model) {
+            <span><b>@name</b></span>
+        }
+    </div>
+}
+
+@section Footer {
+    <div class="view">
+        This is the footer
+    </div>
+}

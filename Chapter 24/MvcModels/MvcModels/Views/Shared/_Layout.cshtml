@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+        label { display: inline-block; width: 100px; font-weight: bold; margin: 5px; }
+        form label { float: left; }
+        input.text-box { float: left; margin: 5px; }
+        button[type=submit] { margin-top: 5px; float: left; clear: left; }
+        form div { clear: both; }
+    </style>
+</head>
+<body>
+    <div>
+        @RenderBody()
+    </div>
+</body>
+</html>

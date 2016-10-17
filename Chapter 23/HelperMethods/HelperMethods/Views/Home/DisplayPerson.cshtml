@@ -1,0 +1,27 @@
+﻿@model HelperMethods.Models.Person
+
+@{
+    ViewBag.Title = "DisplayPerson";
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+<h2>DisplayPerson</h2>
+<div class="dataElem">
+    @Html.Label("PersonId")
+    @Html.Display("PersonId")
+</div>
+<div class="dataElem">
+    @Html.Label("FirstName")
+    @Html.Display("FirstName")
+</div>
+<div class="dataElem">
+    @Html.LabelFor(m => m.LastName)
+    @Html.DisplayFor(m => m.LastName)
+</div>
+<div class="dataElem">
+    @Html.LabelFor(m => m.Role)
+    @Html.DisplayFor(m => m.Role)
+</div>
+<div class="dataElem">
+    @Html.LabelFor(m => m.BirthDate)
+    @Html.DisplayFor(m => m.BirthDate)
+</div>

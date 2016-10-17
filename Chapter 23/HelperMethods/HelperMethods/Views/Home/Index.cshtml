@@ -1,0 +1,26 @@
+﻿@model string
+@using HelperMethods.Infrastructure
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>This is the content from the view:</p>
+    <div style="border: thin solid black; padding: 10px">
+        Here is the message:
+        <p>@Model</p>
+    </div>
+
+    <p>This is the content from the helper method:</p>
+    <div style="border: thin solid black; padding: 10px">
+        @Html.DisplayMessage(Model)
+    </div>
+</body>
+</html>

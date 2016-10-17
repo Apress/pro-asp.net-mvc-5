@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>Microsoft.jQuery.Unobtrusive.Ajax</id>
+    <version>3.0.0</version>
+    <title>Microsoft jQuery Unobtrusive Ajax</title>
+    <authors>Microsoft</authors>
+    <owners>Microsoft</owners>
+    <licenseUrl>http://www.microsoft.com/web/webpi/eula/aspnetcomponent_rtw_ENU.htm</licenseUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>jQuery plugin that unobtrusively sets up jQuery Ajax.</description>
+    <summary>jQuery plugin that unobtrusively sets up jQuery Ajax.</summary>
+    <copyright>© Microsoft Corporation. All rights reserved.</copyright>
+    <dependencies>
+      <dependency id="jQuery" version="1.4.4" />
+    </dependencies>
+  </metadata>
+</package>

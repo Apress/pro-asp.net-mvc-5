@@ -1,0 +1,26 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <style>
+        .field-validation-error { color: #f00; }
+        .validation-summary-errors { color: #f00; font-weight: bold; }
+        .input-validation-error { border: 2px solid #f00; background-color: #fee; }
+        input[type="checkbox"].input-validation-error { outline: 2px solid #f00; }
+        div.hidden { display: none; }
+        div.visible { display: block; }
+    </style>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/clientfeaturesscripts")
+    @RenderSection("Scripts", false)
+</head>
+<body>
+    @RenderSection("Body")
+</body>
+</html>

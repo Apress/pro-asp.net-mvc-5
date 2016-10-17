@@ -1,0 +1,21 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ActionName</title>
+</head>
+<body>
+    <div>The controller is: @ViewBag.Controller</div>
+    <div>The action is: @ViewBag.Action</div>
+    <div>
+        This is a URL:
+        @Html.ActionLink("Click me", "GetLegacyURL",
+            new { legacyURL = "~/articles/Windows_3.1_Overview.html" })
+    </div>
+</body>
+</html>

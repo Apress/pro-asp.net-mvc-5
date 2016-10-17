@@ -1,0 +1,21 @@
+﻿@model MvcModels.Models.Person
+@{
+    ViewBag.Title = "CreatePerson";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Create Person</h2>
+@using (Html.BeginForm("DisplaySummary", "Home")) {
+    <div>@Html.LabelFor(m => m.PersonId)@Html.EditorFor(m => m.PersonId)</div>
+    <div>@Html.LabelFor(m => m.FirstName)@Html.EditorFor(m => m.FirstName)</div>
+    <div>@Html.LabelFor(m => m.LastName)@Html.EditorFor(m => m.LastName)</div>
+    <div>@Html.LabelFor(m => m.Role)@Html.EditorFor(m => m.Role)</div>
+    <div>
+        @Html.LabelFor(m => m.HomeAddress.City)
+        @Html.EditorFor(m => m.HomeAddress.City)
+    </div>
+    <div>
+        @Html.LabelFor(m => m.HomeAddress.Country)
+        @Html.EditorFor(m => m.HomeAddress.Country)
+    </div>
+    <button type="submit">Submit</button>
+}
