@@ -81,17 +81,17 @@ namespace LanguageFeatures.Controllers {
                 }
             };
 
-            // create and populate an array of Product objects
+            // create and populate an array of Products objects
             Product[] productArray = {
-                new Product {Name = "Kayak", Price = 275M},
-                new Product {Name = "Lifejacket", Price = 48.95M},
-                new Product {Name = "Soccer ball", Price = 19.50M},
-                new Product {Name = "Corner flag", Price = 34.95M}
+                new Product { Name = "Canoe", Price = 150M },
+                new Product { Name = "Paddle", Price = 16.00M },
+                new Product { Name = "Tea Cup Coaster Set", Price = 25.00M },
+                new Product { Name = "Gumption", Price = 100M }
             };
 
             // get the total value of the products in the cart
             decimal cartTotal = products.TotalPrices();
-            decimal arrayTotal = products.TotalPrices();
+            decimal arrayTotal = productArray.TotalPrices();
 
             return View("Result",
                 (object)String.Format("Cart Total: {0}, Array Total: {1}",
