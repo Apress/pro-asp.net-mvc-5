@@ -1,0 +1,89 @@
+1. First page after cover, last paragraph: "Any source code or other supplementary material referenced by the author in this text is available to readers at
+www.apress.com/9781430257882": The url should be http://www.apress.com/9781430265290. The ISBN from the url from the book is wrong, pointing to other book "Entity Framework 6 Recipes" by Brian Driscoll.
+
+2. Page 4: Two missing enclosing brackets (typos):
+	- Section "Agile and Test-Driven Development" (begun on page 3), last paragraph, first phrase: "independent software vendor (ISV" should be "independent software vendor (ISV)".
+	- Section "Ruby on Rails", last paragraph, second phrase: "object-relational mapping (ORM" should be "object-relational mapping (ORM)".
+
+3. Page 35: Section "Using Model Binding", 1st paragraph (typo): "Figure 2-18" should be "Figure 2-19".
+
+4. Page 58: Section "Breaking and Declaring Dependencies", last phrase (typo): "In short, the PassworsResetHelper..." should be "In short, the PasswordResetHelper...".
+
+5. Page 59: Section "Using a Dependency Injection Container", Tip, second phrase (grammatical): "I are going to use Ninject..." should be "I am going to use Ninject...".
+
+6. Page 95: Chapter 5 - "Working with Razor", first phrase (typo): "A view engine procezses ASP.NET content..." should be "A view engine processes ASP.NET content...".
+
+7. Page 107: Table 5-2, first row, second column (typo): "Passa view model object..." should be "Pass a view model object...".
+
+8. Page 232: Section "Removing Items from Cart", second line (grammatical): "... which I are going to do..." should be "... which I am going to do...".
+
+9. Page 234: Section "Adding the Cart Summary", first paragraph, last line (words doubled): "adding a new a new item to the cart" should be "adding a new item to the cart".
+
+10. Page 246: Section "Implementing the Interface", in the "foreach (var line = cart.Lines)" block there is a missing closing bracket in the format string (it doesn't affect the functionality, it's just about look): "{0} x {1} (subtotal: {2:c}" should be "{0} x {1} (subtotal: {2:c})".
+
+11. Page 264: Section "Helping the Controller Select a View", Listing 10-4: "@Html.ActionLink("Home", "List", "Product", new { @class = "btn btn-default btn-sm" })" should be "@Html.ActionLink("Home", "List", "Product", null, new { @class = "btn btn-default btn-sm" })" (After "Product" should be a null, as the routeValues parameter, and then "new { @class = ...", which is the htmlAttributes parameter. As it is now in the book, "Product" is (wrongly) interpreted as routeValues. The error is present also in the example code.)
+
+12. Page 267: Section "Removing View Duplication", Listing 10-7: same error as #11.
+
+13. Page 374: Section "Introducing URL Patterns", Table 15-2 (typos): Segment Variables column values for the first three rows should have a separator (space, comma) between the controller name and the "action" segment variable name:
+	- controller = Admin, action = Index 
+	- controller = Index, action = Admin 
+	- controller = Apples, action = Oranges
+
+14. Page 382: Section "Defining Default Values", Table 15-3 (typos): same as #13.
+
+15. Page 392: Section "Defining Optional URl Segments", Table 15-4 (typos): same as #13.
+
+16. Page 395: Section "Defining Variable-Length Routes", Table 15-5 (typos): same as #13.
+
+17. Page 425: Section "Generating Fully URLs in Links", Listing 16-9: " myFragmentName" is specified in code (note the leading space), but later it's mentioned in the generated URL "MyId#myFragmentName", with no space between "#" and "myFragmentName".
+
+18. Pages 430 - 433: Section Customizing the Routing System: The final example is not working (at least when I tried it, with VisualStudio 2015, .Net Framework 4.5.2, ASP.NET MVC 5), because the URLs containing dots (.) cannot be routed by default using legacy routing. I found two solutions for this, both by adding some XML in the Web.config file, under configuration / system.webServer (create if doesn't exist):
+	1. 	<modules runAllManagedModulesForAllRequests="true" />
+	2. 	<handlers>
+			<add name="HtmlFileHandler" path="*.html" verb="GET" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0" />
+		</handlers>
+None of this "solutions" are recommended due to performance issues and because sometime we don't want to route all the "*.html" URLs, by example (but for demonstration is ok). In our example we can use the second technique, by narrowing the routed paths like path="articles/*.html", if we have in the original structure a folder containing HTML files with articles.
+
+19. Page 455: Section "Creating a Controller by Deriving from the Controller Class", the paragraph before Listing 17-3, last lines (typo): "... with some simple changesto set a ViewBag property..." should be "... with some simple changes to set a ViewBag property...".
+
+20. Page 488: Section "Introducing Filter Types", within the tip (typo): "IoverrideFilter" should be "IOverrideFilter".
+
+21. Page 509: Section "Using Action Filters", within the second phrase of the first paragraph (typo): "The built-in class for creating..." should be "The built-in interface for creating...".
+
+22. Page 512: Section "Implementing the OnActionExecuted Method", Listing 18-36 (typo): "This is the ActionFilterTest action" should be "This is the FilterTest action" (It's not consistent with the previous method version and with the Figure 18-8, representing the running result, at page 513).
+
+23. Page 513: Section "Using Result Filters", Listing 18-37 (typo): In the description, "ProFileResultAttribute.cs" should be "ProfileResultAttribute".
+
+24. Page 525: Section "Overriding Filters", the last paragraph: The property FiltersToOverride from the IOverrideFilter interface is referred as method, twice: "The FilterToOverride method returns..." and "... I implemented the FiltersToOverride method...".
+
+25. Page 563: Section "Creating a Custom IView", in the Write method of the DebugDataView class: "writer.Write(string.Format(template, values) + "<p/>");" should be "writer.Write("<p>" + string.Format(template, values) + "<p/>");" (the starting "<p>" tag is missing).
+
+26. Page 591: Section "Creating an Inline Helper Method", within the tip (typo): "Notice that I prefixed the foreach keyword with @ in this example but not in Listing 21-4." should be "Notice that I prefixed the foreach keyword with @ in this example but not in Listing 21-3." (Listing number is incorrect.)
+
+27. Page 598: Section "Encoding Helper Method Content", within the first change to the DisplayMessage helper method: the bold style should by applied to the "string" word (which is the new method type) instead of "static".
+
+28. Page 605: Section "Creating Form Elements", Listing 21-19: The statement "Using the Most Complex Overload of the BeginForm in the CreatePerson.cs File" should be "Using the Most Complex Overload of the BeginForm in the CreatePerson.cshtml File".
+
+29. Page 631: Section "Using Metadata to Control Editing and Visibility", in the end of the paragraph before Listing 22-12: "... set the value of the DisplayValue property in the DisplayName attribute to false..." should be "... set the value of the DisplayValue property in the HiddenInput attribute to false...".
+
+30. Page 631: Section "Using Metadata to Control Editing and Visibility", Listing 22-12: The statement "Using the HiddenInput Attribute to Hide a Property in the Person.cshtml File" should be "Using the HiddenInput Attribute to Hide a Property in the Person.cs File".
+
+31. Page 633: Section "Using Metadata for Labels", within the paragraph before Listing 22-13: "... I can apply the DisplayName attribute..." should be "... I can apply the Display attribute..." (The DisplayName attribute is explained after Listing 21-13).
+
+32. Page 664: Section "Working with Ajax Callbacks", Table 23-4: The property and jQuery events from the second and fourth rows are not matching the descriptions from the respective row and should be switched. So <OnSuccess, success> should be described as "Called if the request is successful", irrespective <OnComplete, complete> as "Called when the request has been completed, irrespective of whether the request succeeded or failed".
+
+33. Page 666: Section "Working with Ajax Callbacks", within the paragraph before Figure 23-8 (typo): "... clicking one of the links will display a sequence of alters..." should be "... clicking one of the links will display a sequence of alerts...".
+
+34. Page 714: Section "Explicitly Validating a model", within the paragraph before the explanation of ModelState.IsValid: "This method returns true if I called the Model.State.AddModelError method during the checks..." should be "This property returns false if I called the ModelState.AddModelError method during the checks...".
+
+35. Page 722: Section "Performing Validation in the Model Binder", within Table 25-3 (typo): The method name "OmModelUpdated" should be "OnModelUpdated".
+
+36. Page 743: Section "Creating the Layout and View", at the end of the last paragraph in the page: "I added a view file called MakeBooking.cshtml to the Home/Views folder..." should be "I added a view file called MakeBooking.cshtml to the Views/Home folder...".
+
+37. Page 750: Section "Defining the Bundles", Listing 26-6 contains an artifact within this line: "BundleConfig.RegisterBundles(BundleTable.Bundles);,bv"; it should be only "BundleConfig.RegisterBundles(BundleTable.Bundles);".
+
+38. Page 767: Section "Understanding API Controller Action Selection": There are three places where the request URLs are wrong:
+	1. "/api/reservation" should be "/api/web" (paragraph #2).
+	2. "/api/reservation API" should be "/api/web URL"; here is a second fault: "API" should be "URL" (papargraph #3).
+	3. "/api/reservation/3" should be "/api/web/3" (paragraph #3).
