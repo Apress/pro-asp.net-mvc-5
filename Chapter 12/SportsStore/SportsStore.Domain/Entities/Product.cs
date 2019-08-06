@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Web.Mvc;
 
 namespace SportsStore.Domain.Entities {
 
     public class Product {
 
-        [HiddenInput(DisplayValue = false)]
+        //[HiddenInput(DisplayValue = false)]
+        [Key]
         public int ProductID { get; set; }
 
         [Required(ErrorMessage = "Please enter a product name")]
