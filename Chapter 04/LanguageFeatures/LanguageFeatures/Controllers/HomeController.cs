@@ -23,19 +23,21 @@ namespace LanguageFeatures.Controllers {
             string productName = myProduct.Name;
 
             // generate the view
-            return View("Result", model: string.Format("Product name: {0}", productName));
+            return View("Result", model: $"Product name: {productName}");
         }
 
         public ViewResult CreateProduct() {
 
             // create a new Product object
             Product myProduct = new Product {
-                ProductID = 100, Name = "Kayak",
+                ProductID = 100,
+                Name = "Kayak",
                 Description = "A boat for one person",
-                Price = 275M, Category = "Watersports"
+                Price = 275M,
+                Category = "Watersports"
             };
 
-            return View("Result", model: string.Format("Category: {0}", myProduct.Category));
+            return View("Result", model: $"Category: {myProduct.Category}");
         }
 
         public ViewResult CreateCollection() {
@@ -64,7 +66,7 @@ namespace LanguageFeatures.Controllers {
             // get the total value of the products in the cart
             decimal cartTotal = cart.TotalPrices();
 
-            return View("Result", model: string.Format("Total: {0:c}", cartTotal));
+            return View("Result", model: $"Total: {cartTotal:C}");
         }
 
         public ViewResult UseExtensionEnumerable() {
@@ -90,7 +92,7 @@ namespace LanguageFeatures.Controllers {
             decimal cartTotal = products.TotalPrices();
             decimal arrayTotal = products.TotalPrices();
 
-            return View("Result", model: string.Format("Cart Total: {0}, Array Total: {1}", cartTotal, arrayTotal));
+            return View("Result", model: $"Cart Total: {cartTotal:C}, Array Total: {arrayTotal:C}");
         }
 
         public ViewResult UseFilterExtensionMethod() {
@@ -106,11 +108,10 @@ namespace LanguageFeatures.Controllers {
 
             decimal total = 0;
 
-            foreach (Product prod in products
-                    .Filter(prod => prod.Category == "Soccer" || prod.Price > 20)) {
+            foreach (Product prod in products.Filter(prod => prod.Category == "Soccer" || prod.Price > 20)) {
                 total += prod.Price;
             }
-            return View("Result", model: string.Format("Total: {0}", total));
+            return View("Result", model: $"Total: {total:C}");
         }
 
         public ViewResult CreateAnonArray() {
@@ -137,18 +138,16 @@ namespace LanguageFeatures.Controllers {
                 new Product {Name = "Corner flag", Category = "Soccer", Price = 34.95M}
             };
 
-            var foundProducts = products.OrderByDescending(e => e.Price)
-                                    .Take(3)
-                                    .Select(e => new {
-                                        e.Name,
-                                        e.Price
-                                    });
+            var foundProducts = 
+                products.OrderByDescending(e => e.Price)
+                        .Take(3)
+                        .Select(e => new { e.Name, e.Price });
 
             products[2] = new Product { Name = "Stadium", Price = 79600M };
 
             StringBuilder result = new StringBuilder();
             foreach (var p in foundProducts) {
-                result.AppendFormat("Price: {0} ", p.Price);
+                result.Append($"Price: {p.Price:C} ");
             }
 
             return View("Result", model: result.ToString());
@@ -166,7 +165,7 @@ namespace LanguageFeatures.Controllers {
 
             products[2] = new Product { Name = "Stadium", Price = 79500M };
 
-            return View("Result", model: string.Format("Sum: {0:c}", results));
+            return View("Result", model: $"Sum: {results:C}");
         }
 
 
