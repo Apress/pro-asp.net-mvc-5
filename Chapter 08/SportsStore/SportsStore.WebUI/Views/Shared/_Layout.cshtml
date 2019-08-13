@@ -8,14 +8,14 @@
     <title>@ViewBag.Title</title>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-dark bg-dark" role="navigation">
+    <div class="navbar navbar-dark bg-dark" role="navigation">
         <a class="navbar-brand" href="#">SPORTS STORE</a>
     </div>
-    <div class="row panel">
-        <div id="categories" class="col-xs-3">
+    <div class="row">
+        <div id="categories" class="col-md-3">
             @Html.Action("Menu", "Nav")
         </div>
-        <div class="col-xs-8">
+        <div class="col-md-8">
             @RenderBody()
         </div>
     </div>
