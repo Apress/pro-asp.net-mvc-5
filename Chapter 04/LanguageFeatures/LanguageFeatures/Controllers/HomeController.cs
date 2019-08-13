@@ -23,8 +23,7 @@ namespace LanguageFeatures.Controllers {
             string productName = myProduct.Name;
 
             // generate the view
-            return View("Result",
-                (object)String.Format("Product name: {0}", productName));
+            return View("Result", model: string.Format("Product name: {0}", productName));
         }
 
         public ViewResult CreateProduct() {
@@ -36,8 +35,7 @@ namespace LanguageFeatures.Controllers {
                 Price = 275M, Category = "Watersports"
             };
 
-            return View("Result",
-                (object)String.Format("Category: {0}", myProduct.Category));
+            return View("Result", model: string.Format("Category: {0}", myProduct.Category));
         }
 
         public ViewResult CreateCollection() {
@@ -66,8 +64,7 @@ namespace LanguageFeatures.Controllers {
             // get the total value of the products in the cart
             decimal cartTotal = cart.TotalPrices();
 
-            return View("Result",
-                (object)String.Format("Total: {0:c}", cartTotal));
+            return View("Result", model: string.Format("Total: {0:c}", cartTotal));
         }
 
         public ViewResult UseExtensionEnumerable() {
@@ -93,9 +90,7 @@ namespace LanguageFeatures.Controllers {
             decimal cartTotal = products.TotalPrices();
             decimal arrayTotal = products.TotalPrices();
 
-            return View("Result",
-                (object)String.Format("Cart Total: {0}, Array Total: {1}",
-                    cartTotal, arrayTotal));
+            return View("Result", model: string.Format("Cart Total: {0}, Array Total: {1}", cartTotal, arrayTotal));
         }
 
         public ViewResult UseFilterExtensionMethod() {
@@ -115,7 +110,7 @@ namespace LanguageFeatures.Controllers {
                     .Filter(prod => prod.Category == "Soccer" || prod.Price > 20)) {
                 total += prod.Price;
             }
-            return View("Result", (object)String.Format("Total: {0}", total));
+            return View("Result", model: string.Format("Total: {0}", total));
         }
 
         public ViewResult CreateAnonArray() {
@@ -130,7 +125,7 @@ namespace LanguageFeatures.Controllers {
             foreach (var item in oddsAndEnds) {
                 result.Append(item.Name).Append(" ");
             }
-            return View("Result", (object)result.ToString());
+            return View("Result", model: result.ToString());
         }
 
         public ViewResult FindProducts() {
@@ -156,7 +151,7 @@ namespace LanguageFeatures.Controllers {
                 result.AppendFormat("Price: {0} ", p.Price);
             }
 
-            return View("Result", (object)result.ToString());
+            return View("Result", model: result.ToString());
         }
 
         public ViewResult SumProducts() {
@@ -171,8 +166,7 @@ namespace LanguageFeatures.Controllers {
 
             products[2] = new Product { Name = "Stadium", Price = 79500M };
 
-            return View("Result",
-                (object)String.Format("Sum: {0:c}", results));
+            return View("Result", model: string.Format("Sum: {0:c}", results));
         }
 
 
