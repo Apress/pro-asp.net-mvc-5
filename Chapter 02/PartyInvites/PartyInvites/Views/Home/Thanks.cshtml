@@ -16,24 +16,24 @@
     </style>
 </head>
 <body>
-    @{
-        try {
-            WebMail.SmtpServer = "smtp.example.com";
-            WebMail.SmtpPort = 587;
-            WebMail.EnableSsl = true;
-            WebMail.UserName = "mySmtpUsername";
-            WebMail.Password = "mySmtpPassword";
-            WebMail.From = "rsvps@example.com";
+    <div class="container text-center">
+        @{
+            try {
+                WebMail.SmtpServer = "smtp.example.com";
+                WebMail.SmtpPort = 587;
+                WebMail.EnableSsl = true;
+                WebMail.UserName = "mySmtpUsername";
+                WebMail.Password = "mySmtpPassword";
+                WebMail.From = "rsvps@example.com";
 
-            WebMail.Send("party-host@example.com", "RSVP Notification",
-                Model.Name + " is " + ((Model.WillAttend ?? false) ? "" : "not")
-                    + "attending");
+                WebMail.Send("party-host@example.com", "RSVP Notification",
+                    Model.Name + " is " + ((Model.WillAttend ?? false) ? "" : "not")
+                        + "attending");
 
-        } catch (Exception) {
-            @:<b>Sorry - we couldn't send the email to confirm your RSVP.</b>
+            } catch (Exception) {
+                @:<b>Sorry - we couldn't send the email to confirm your RSVP.</b>
+            }
         }
-    }
-    <div class="text-center">
         <h1>Thank you, @Model.Name!</h1>
         <div class="lead">
             @if (Model.WillAttend == true) {
