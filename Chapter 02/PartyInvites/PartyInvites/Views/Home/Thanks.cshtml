@@ -19,7 +19,10 @@
     <div class="container text-center">
         @{
             try {
-                WebMail.SmtpServer = "smtp.example.com";
+                // See https://www.siteground.com/kb/google_free_smtp_server/
+                // See https://devanswers.co/allow-less-secure-apps-access-gmail-account/
+
+                WebMail.SmtpServer = "smtp.gmail.com";
                 WebMail.SmtpPort = 587;
                 WebMail.EnableSsl = true;
                 WebMail.UserName = "mySmtpUsername";
@@ -27,11 +30,12 @@
                 WebMail.From = "rsvps@example.com";
 
                 WebMail.Send("party-host@example.com", "RSVP Notification",
-                    Model.Name + " is " + ((Model.WillAttend ?? false) ? "" : "not")
+                    Model.Name + " is " + (Model.WillAttend == true ? "" : "not ")
                         + "attending");
 
-            } catch (Exception) {
-                @:<b>Sorry - we couldn't send the email to confirm your RSVP.</b>
+            } catch (Exception ex) {
+                <strong class="d-block text-danger">Sorry - we couldn't send the email to confirm your RSVP.</strong>
+                <strong class="d-block text-danger">@ex.Message</strong>
             }
         }
         <h1>Thank you, @Model.Name!</h1>
