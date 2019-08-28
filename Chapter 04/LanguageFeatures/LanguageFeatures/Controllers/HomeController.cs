@@ -34,7 +34,7 @@ namespace LanguageFeatures.Controllers {
                 Name = "Kayak",
                 Description = "A boat for one person",
                 Price = 275M,
-                Category = "Watersports"
+                Category = "Water Sports"
             };
 
             return View("Result", model: $"Category: {myProduct.Category}");
@@ -53,11 +53,11 @@ namespace LanguageFeatures.Controllers {
         }
 
         public ViewResult UseExtension() {
-            // create and populate ShoppingCart 
+            // create and populate ShoppingCart
             ShoppingCart cart = new ShoppingCart {
                 Products = new List<Product> {
                     new Product {Name = "Kayak", Price = 275M},
-                    new Product {Name = "Lifejacket", Price = 48.95M},
+                    new Product {Name = "Life jacket", Price = 48.95M},
                     new Product {Name = "Soccer ball", Price = 19.50M},
                     new Product {Name = "Corner flag", Price = 34.95M}
                 }
@@ -74,7 +74,7 @@ namespace LanguageFeatures.Controllers {
             IEnumerable<Product> products = new ShoppingCart {
                 Products = new List<Product> {
                     new Product {Name = "Kayak", Price = 275M},
-                    new Product {Name = "Lifejacket", Price = 48.95M},
+                    new Product {Name = "Life jacket", Price = 48.95M},
                     new Product {Name = "Soccer ball", Price = 19.50M},
                     new Product {Name = "Corner flag", Price = 34.95M}
                 }
@@ -83,7 +83,7 @@ namespace LanguageFeatures.Controllers {
             // create and populate an array of Product objects
             Product[] productArray = {
                 new Product {Name = "Kayak", Price = 275M},
-                new Product {Name = "Lifejacket", Price = 48.95M},
+                new Product {Name = "Life jacket", Price = 48.95M},
                 new Product {Name = "Soccer ball", Price = 19.50M},
                 new Product {Name = "Corner flag", Price = 34.95M}
             };
@@ -99,8 +99,8 @@ namespace LanguageFeatures.Controllers {
 
             IEnumerable<Product> products = new ShoppingCart {
                 Products = new List<Product> {
-                    new Product {Name = "Kayak", Category = "Watersports", Price = 275M},
-                    new Product {Name = "Lifejacket", Category = "Watersports", Price = 48.95M},
+                    new Product {Name = "Kayak", Category = "Water Sports", Price = 275M},
+                    new Product {Name = "Life jacket", Category = "Water Sports", Price = 48.95M},
                     new Product {Name = "Soccer ball", Category = "Soccer", Price = 19.50M},
                     new Product {Name = "Corner flag", Category = "Soccer", Price = 34.95M}
                 }
@@ -131,14 +131,14 @@ namespace LanguageFeatures.Controllers {
 
         public ViewResult FindProducts() {
 
-            Product[] products = {            
-                new Product {Name = "Kayak", Category = "Watersports", Price = 275M},
-                new Product {Name = "Lifejacket", Category = "Watersports", Price = 48.95M},
+            Product[] products = {
+                new Product {Name = "Kayak", Category = "Water Sports", Price = 275M},
+                new Product {Name = "Life jacket", Category = "Water Sports", Price = 48.95M},
                 new Product {Name = "Soccer ball", Category = "Soccer", Price = 19.50M},
                 new Product {Name = "Corner flag", Category = "Soccer", Price = 34.95M}
             };
 
-            var foundProducts = 
+            var foundProducts =
                 products.OrderByDescending(e => e.Price)
                         .Take(3)
                         .Select(e => new { e.Name, e.Price });
@@ -155,8 +155,8 @@ namespace LanguageFeatures.Controllers {
 
         public ViewResult SumProducts() {
             Product[] products = {
-                new Product {Name = "Kayak", Category = "Watersports", Price = 275M},
-                new Product {Name = "Lifejacket", Category = "Watersports", Price = 48.95M},
+                new Product {Name = "Kayak", Category = "Water Sports", Price = 275M},
+                new Product {Name = "Life jacket", Category = "Water Sports", Price = 48.95M},
                 new Product {Name = "Soccer ball", Category = "Soccer", Price = 19.50M},
                 new Product {Name = "Corner flag", Category = "Soccer", Price = 34.95M}
             };
