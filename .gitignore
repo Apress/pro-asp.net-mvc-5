@@ -53,3 +53,5 @@ bld/
 *.pidb
 *.svclog
 *.scc
+*.dbmdl
+*.jfm
