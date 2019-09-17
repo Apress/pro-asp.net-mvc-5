@@ -12,11 +12,11 @@ namespace SportsStore.WebUI.Controllers {
             repository = repo;
         }
 
-        public ViewResult Index() {
+        public ActionResult Index() {
             return View(repository.Products);
         }
 
-        public ViewResult Edit(int productId) {
+        public ActionResult Edit(int productId) {
             Product product = 
                 repository.Products.FirstOrDefault(p => p.ProductID == productId);
             return View(product);
@@ -24,17 +24,17 @@ namespace SportsStore.WebUI.Controllers {
 
         [HttpPost]
         public ActionResult Edit(Product product) {
-            if (ModelState.IsValid) {
-                repository.SaveProduct(product);
-                TempData["message"] = $"{product.Name} has been saved";
-                return RedirectToAction("Index");
-            } else {
-                // there is something wrong with the data values
-                return View(product);
+            if (!ModelState.IsValid) {
+              // there is something wrong with the data values
+              return View(product);
             }
+
+            repository.SaveProduct(product);
+            TempData["message"] = $"{product.Name} has been saved";
+            return RedirectToAction("Index");
         }
 
-        public ViewResult Create() {
+        public ActionResult Create() {
             return View("Edit", new Product());
         }
 
