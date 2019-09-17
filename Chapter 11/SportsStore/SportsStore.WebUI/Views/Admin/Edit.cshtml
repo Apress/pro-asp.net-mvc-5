@@ -11,23 +11,26 @@
 
 @using (Html.BeginForm("Edit", "Admin")) {
     <div class="p-3">
-        @foreach (var property in ViewData.ModelMetadata.Properties) {
-            if (property.PropertyName != "ProductID") {
-                <div class="form-group">
-                    <label for="@property.PropertyName">
-                      @(property.DisplayName ?? property.PropertyName)
-                    </label>
-                    @if (property.PropertyName == "Description") {
-                        @Html.TextArea(property.PropertyName, null,
-                            new { @class = "form-control", rows = 5 })
-                    } else {
-                        @Html.TextBox(property.PropertyName, null,
-                            new { @class = "form-control" })
-                    }
-                    @Html.ValidationMessage(property.PropertyName, new { @class = "text-danger" })
-                </div>
-            }
-        }
+        <div class="form-group">
+            @Html.LabelFor(x => x.Name)
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Description)
+            @Html.TextAreaFor(x => x.Description, new { @class = "form-control", rows = 5 })
+            @Html.ValidationMessageFor(x => x.Description, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Price)
+            @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Price, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Category)
+            @Html.TextBoxFor(x => x.Category, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Category, null, new { @class = "text-danger" })
+        </div>
     </div>
 
     <div class="bg-light p-3">
