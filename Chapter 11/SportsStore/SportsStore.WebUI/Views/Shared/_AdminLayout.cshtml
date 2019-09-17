@@ -1,6 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/Content/bootstrap.css" />
     <link rel="stylesheet" href="~/Content/ErrorStyles.css" />
@@ -9,7 +10,7 @@
 <body>
     <div>
         @if (TempData["message"] != null) {
-            <div class="alert alert-success">@TempData["message"]</div>
+            <div class="alert alert-success m-3">@TempData["message"]</div>
         }
         @RenderBody()
     </div>
