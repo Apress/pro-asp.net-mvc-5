@@ -14,6 +14,7 @@
     <div class="form-group">
         <label>Name</label>
         @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
     </div>
 
     <h3>Address</h3>
@@ -23,6 +24,7 @@
             <div class="form-group">
                 <label>@(property.DisplayName ?? property.PropertyName)</label>
                 @Html.TextBox(property.PropertyName, null, new { @class = "form-control" })
+                @Html.ValidationMessage(property.PropertyName, new { @class = "text-danger" })
             </div>
         }
     }
