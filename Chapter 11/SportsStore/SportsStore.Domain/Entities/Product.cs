@@ -1,18 +1,19 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace SportsStore.Domain.Entities {
 
     public class Product {
 
-        //[HiddenInput(DisplayValue = false)]
         [Key]
+        [HiddenInput(DisplayValue = false)]
         public int ProductID { get; set; }
 
         [Required(ErrorMessage = "Please enter a product name")]
         public string Name { get; set; }
-        [DataType(DataType.MultilineText)]
 
         [Required(ErrorMessage = "Please enter a description")]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
 
         [Required]
