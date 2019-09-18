@@ -35,7 +35,16 @@
             @Html.ValidationMessageFor(x => x.Category, null, new { @class = "text-danger" })
         </div>
         <div class="form-group">
-            <div>
+            <label for="Image">Image</label>
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="Image" name="Image"
+                           onchange="$('#ImageLabel').html($(this).val() || 'Choose File...');">
+                    <label id="ImageLabel" class="custom-file-label" for="Image">Choose File...</label>
+                </div>
+            </div>
+
+            @*<div>
                 <label style="position:relative;cursor:pointer;">
                     <span class="font-weight-bolder">Image</span>
                     <span class="btn btn-primary btn-sm">Choose File...</span>
@@ -46,7 +55,8 @@
                            onchange="$('#upload-file-info').html($(this).val());">
                 </label>
                 <span class="badge badge-pill badge-secondary" id="upload-file-info"></span>
-            </div>
+            </div>*@
+            
             @if (Model.ImageData == null) {
                 <div class="form-control-static">No Image</div>
             } else {
