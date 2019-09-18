@@ -20,9 +20,10 @@ namespace SportsStore.WebUI {
                 }
             );
 
-            routes.MapRoute(null,
-                "Admin",
-                new { controller = "Admin", action = "Index" }
+            routes.MapRoute(
+                name: null,
+                url: "Admin",
+                defaults: new { controller = "Admin", action = "Index" }
             );
 
             routes.MapRoute(null,
