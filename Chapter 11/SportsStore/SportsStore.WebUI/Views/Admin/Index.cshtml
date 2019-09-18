@@ -24,9 +24,9 @@
                 <td class="text-center">
                     @using (Html.BeginForm("Delete", "Admin")) {
                         @Html.Hidden("ProductID", item.ProductID)
-                        <input type="submit"
-                               class="btn btn-secondary btn-sm"
-                               value="Delete" />
+                        <button type="submit" class="btn btn-danger btn-sm">
+                          Delete
+                        </button>
                     }
                 </td>
             </tr>

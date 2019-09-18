@@ -17,7 +17,7 @@ namespace SportsStore.WebUI.Controllers {
         }
 
         public ActionResult Edit(int productId) {
-            Product product = 
+            Product product =
                 repository.Products.FirstOrDefault(p => p.ProductID == productId);
             return View(product);
         }

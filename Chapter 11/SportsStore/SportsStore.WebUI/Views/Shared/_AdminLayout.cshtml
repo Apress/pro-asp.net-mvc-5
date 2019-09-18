@@ -9,7 +9,8 @@
 </head>
 <body>
     <div>
-        @if (TempData["message"] != null) {
+        @if (TempData["message"] != null)
+        {
             <div class="alert alert-success m-3">@TempData["message"]</div>
         }
         @RenderBody()
