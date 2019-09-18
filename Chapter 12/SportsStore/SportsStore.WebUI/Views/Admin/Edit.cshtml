@@ -59,7 +59,7 @@
             </div>*@
             
             @if (Model.ImageData == null) {
-                <div class="form-control-static">No Image</div>
+                <div class="text-muted">No Image</div>
             } else {
                 <img class="img-thumbnail" width="150" height="150"
                      src="@Url.Action("GetImage", "Product", new { Model.ProductID })" />
