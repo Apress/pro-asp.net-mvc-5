@@ -9,7 +9,6 @@
 <html>
 <head>
     <link href="~/Content/bootstrap.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
     <title>Thanks</title>
     <style>
@@ -17,24 +16,28 @@
     </style>
 </head>
 <body>
-    @{
-        try {
-            WebMail.SmtpServer = "smtp.example.com";
-            WebMail.SmtpPort = 587;
-            WebMail.EnableSsl = true;
-            WebMail.UserName = "mySmtpUsername";
-            WebMail.Password = "mySmtpPassword";
-            WebMail.From = "rsvps@example.com";
+    <div class="container text-center">
+        @{
+            try {
+                // See https://www.siteground.com/kb/google_free_smtp_server/
+                // See https://devanswers.co/allow-less-secure-apps-access-gmail-account/
 
-            WebMail.Send("party-host@example.com", "RSVP Notification",
-                Model.Name + " is " + ((Model.WillAttend ?? false) ? "" : "not")
-                    + "attending");
+                WebMail.SmtpServer = "smtp.gmail.com";
+                WebMail.SmtpPort = 587;
+                WebMail.EnableSsl = true;
+                WebMail.UserName = "mySmtpUsername";
+                WebMail.Password = "mySmtpPassword";
+                WebMail.From = "rsvps@example.com";
 
-        } catch (Exception) {
-            @:<b>Sorry - we couldn't send the email to confirm your RSVP.</b>
+                WebMail.Send("party-host@example.com", "RSVP Notification",
+                    Model.Name + " is " + (Model.WillAttend == true ? "" : "not ")
+                        + "attending");
+
+            } catch (Exception ex) {
+                <strong class="d-block text-danger">Sorry - we couldn't send the email to confirm your RSVP.</strong>
+                <strong class="d-block text-danger">@ex.Message</strong>
+            }
         }
-    }
-    <div class="text-center">
         <h1>Thank you, @Model.Name!</h1>
         <div class="lead">
             @if (Model.WillAttend == true) {

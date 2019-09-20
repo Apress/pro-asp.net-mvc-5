@@ -8,6 +8,6 @@
     @Html.Partial("ProductSummary", p)
 }
 
-<div class="pager">
+<div class="btn-group float-right">
     @Html.PageLinks(Model.PagingInfo, x => Url.Action("List", new { page = x }))
 </div>

@@ -5,6 +5,7 @@ namespace SportsStore.Domain.Entities {
 
     public class Product {
 
+        [Key]
         [HiddenInput(DisplayValue = false)]
         public int ProductID { get; set; }
 

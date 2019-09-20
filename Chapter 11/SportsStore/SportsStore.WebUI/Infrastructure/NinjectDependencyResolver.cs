@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web.Mvc;
-using Moq;
 using Ninject;
 using SportsStore.Domain.Abstract;
 using SportsStore.Domain.Concrete;

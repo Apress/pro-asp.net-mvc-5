@@ -1,39 +1,53 @@
 ﻿@model SportsStore.Domain.Entities.Product
 
 @{
-    ViewBag.Title = "Admin: Edit " + @Model.Name;
+    if (Model != null && Model.ProductID != 0)
+    {
+        ViewBag.Title = "Admin: Edit " + Model.Name;
+    }
+    else
+    {
+        ViewBag.Title = "Admin: Create";
+    }
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div class="panel">
-    <div class="panel-heading">
-        <h3>Edit @Model.Name</h3>
+<div class="bg-light p-3">
+    <h3>@ViewBag.Title</h3>
+</div>
+
+@using (Html.BeginForm("Edit", "Admin"))
+{
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    @Html.HiddenFor(x => x.ProductID)
+    <div class="p-3">
+        <div class="form-group">
+            @Html.LabelFor(x => x.Name)
+            @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Name, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Description)
+            @Html.TextAreaFor(x => x.Description, new { @class = "form-control", rows = 5 })
+            @Html.ValidationMessageFor(x => x.Description, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Price)
+            @Html.TextBoxFor(x => x.Price, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Price, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(x => x.Category)
+            @Html.TextBoxFor(x => x.Category, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Category, null, new { @class = "text-danger" })
+        </div>
     </div>
 
-    @using (Html.BeginForm("Edit", "Admin")) {
-        <div class="panel-body">
-            @foreach (var property in ViewData.ModelMetadata.Properties) {
-                if (property.PropertyName != "ProductID") {
-                    <div class="form-group">
-                        <label>@(property.DisplayName ?? property.PropertyName)</label>
-                        @if (property.PropertyName == "Description") {
-                            @Html.TextArea(property.PropertyName, null,
-                                new { @class = "form-control", rows = 5 })
-                        } else {
-                            @Html.TextBox(property.PropertyName, null,
-                                new { @class = "form-control" })
-                        }
-                        @Html.ValidationMessage(property.PropertyName)
-                    </div>
-                }
-            }
-        </div>
-
-        <div class="panel-footer">
-            <input type="submit" value="Save" class="btn btn-primary" />
-            @Html.ActionLink("Cancel and return to List", "Index", null, new {
-           @class = "btn btn-default"
-       })
-        </div>
-    }
-</div>
+    <div class="bg-light p-3">
+        <button type="submit" class="btn btn-primary">
+          Save
+        </button>
+        @Html.ActionLink("Cancel and return to List", "Index", null,
+            new { @class = "btn btn-secondary" })
+    </div>
+}

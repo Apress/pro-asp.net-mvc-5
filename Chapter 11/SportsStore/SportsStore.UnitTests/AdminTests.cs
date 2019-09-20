@@ -27,8 +27,7 @@ namespace SportsStore.UnitTests {
 
 
             // Action
-            Product[] result = ((IEnumerable<Product>)target.Index().
-                ViewData.Model).ToArray();
+            Product[] result = (((ViewResult)target.Index()).ViewData.Model as IEnumerable<Product>).ToArray();
 
             // Assert
             Assert.AreEqual(result.Length, 3);
@@ -52,9 +51,9 @@ namespace SportsStore.UnitTests {
             AdminController target = new AdminController(mock.Object);
 
             // Act
-            Product p1 = target.Edit(1).ViewData.Model as Product;
-            Product p2 = target.Edit(2).ViewData.Model as Product;
-            Product p3 = target.Edit(3).ViewData.Model as Product;
+            Product p1 = ((ViewResult)target.Edit(1)).ViewData.Model as Product;
+            Product p2 = ((ViewResult)target.Edit(2)).ViewData.Model as Product;
+            Product p3 = ((ViewResult)target.Edit(3)).ViewData.Model as Product;
 
             // Assert
             Assert.AreEqual(1, p1.ProductID);
@@ -77,7 +76,7 @@ namespace SportsStore.UnitTests {
             AdminController target = new AdminController(mock.Object);
 
             // Act
-            Product result = (Product)target.Edit(4).ViewData.Model;
+            Product result = ((ViewResult)target.Edit(4)).ViewData.Model as Product;
 
             // Assert
             Assert.IsNull(result);
